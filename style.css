@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    height: 200vh;
+}
+    
+.product-box{
+    border-radius: 1.5rem;
+}
+.product-box-img{
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+.product-cart{
+    border-radius: 1rem;
+    margin-top: 30px;
+}
+.product-cart-img{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: -10px;
+}
+.product-cart-name {
+    position: relative;
+    top: 10px;
+    left: -10px;
+}
+.product-cart-quantity {
+    position: relative;
+    top: 0.65rem;
+    right: 0.25rem;
+}
+.product-cart-price {
+    position: relative;
+    top: 0.65rem;
+}
+#cart{
+    width: 500px;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    visibility: hidden;
+}
+#open{
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    z-index: 1001;
+}
+#close{
+    z-index: 1001;
+}
+@keyframes slideIn {
+    0% {
+        right: -500px;
+    }
+    100% {
+        right: 0px;
+    }
+}
+@keyframes slideOut {
+    0% {
+        right: 0px;
+    }
+    100% {
+        right: -500px;
+    }
+}
+@keyframes slideInBtn {
+    0% {
+        right: 10px;
+    }
+    100% {
+        right: 475px;
+    }
+    
+}
+@keyframes slideOutBtn {
+    0% {
+        right: 475px;
+    }
+    100% {
+        right: 10px;
+    }
+    
+}
+#alert{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    z-index: 1001;
+    background-color: white;
+    width: 500px;
+    height: 50px;
+}
+#textFerrero {
+    position: relative;
+    left: -15px;
+}
+.close{
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    cursor: pointer;
+}
+.total{
+    border: 2px solid #ccc;
+    height: 75px;
+    width: 90%;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+.textTotal{
+    position: relative;
+    top: 30%;
+    left: 20px;
+}
+.valorTotal{
+    position: relative;
+    top: 30%;
+    right: -220px;
+    font-size: 1.5rem;
+    min-width: 350px;
+}
+#counter {
+    border-radius: 8px;
+}
+.valor {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 1.1rem;
+    padding: 0.6rem;
+    font-weight: 500;
+}
+button{
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity .3s;
+}
+#divItems {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    height: 85%; 
+    overflow-y: auto;
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; 
+}
+
+
+#divItems::-webkit-scrollbar {
+    display: none; 
+}
+.removeButton {
+    position: relative;
+    top: -2.8rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ccc;
+    z-index: 1000;
+}
+.removeButton:hover {
+    color: crimson;
+    transition: color 0.3s ease-in-out;
+}
