@@ -18,6 +18,9 @@ body{
 .product-cart{
     border-radius: 1rem;
     margin-top: 30px;
+    height: 135px;
+    width: 380px;
+    padding: 2rem;
 }
 .product-cart-img{
     width: 100px;

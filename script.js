@@ -1,51 +1,105 @@
 const products = [
     {
-        name: "Branco's Easter Egg",
+        name: "Ouro Branco",
         priceNormal: 45.90,
         priceText: "R$ 45.90",
         image: "./img/OuroBranco.png",
-        quantity: 0
+        quantity: 0,
+        category: "chocolate"
     },
     {
-        name: "Sonho's Easter Egg",
+        name: "Sonho de Valsa",
         priceNormal: 39.99,
         priceText: "R$ 39.99",
         image: "./img/SonhoDeValsa.png",
-        quantity: 0
+        quantity: 0,
+        category: "chocolate"
     },
     {
-        name: "Rocher's Easter Egg",
+        name: "Ferrero Rocher",
         priceNormal: 54.90,
         priceText: "R$ 54.90",
         image: "./img/FerreroRocher.png",
-        quantity: 0
+        quantity: 0,
+        category: "chocolate"
     },
     {
-        name: "Nestle's Easter Egg",
+        name: "Galak Nestle",
         priceNormal: 44.90,
         priceText: "R$ 44.90",
         image: "./img/Nestle.png",
-        quantity: 0
+        quantity: 0,
+        category: "chocolate"
     },
     {
-        name: "Lacta's Easter Egg",
+        name: "Bis Lacta",
         priceNormal: 60.99,
         priceText: "R$ 60.99",
         image: "./img/Lacta.png",
-        quantity: 0
+        quantity: 0,
+        category: "chocolate"
     },
     {
-        name: "Dublin' Easter Egg",
+        name: "Confeitos Dublin",
         priceNormal: 65.90,
         priceText: "R$ 65.90",
         image: "./img/Confetes.png",
-        quantity: 0
+        quantity: 0,
+        category: "chocolate"
+    },
+    {
+        name: "Smartphone",
+        priceNormal: 299.99,
+        priceText: "R$ 299.99",
+        image: "./img/Celular.png",
+        quantity: 0,
+        category: "electronics"
+    },
+    {
+        name: "Earphones",
+        priceNormal: 99.99,
+        priceText: "R$ 99.99",
+        image: "./img/Bluetooth.png",
+        quantity: 0,
+        category: "electronics"
+    },
+    {
+        name: "Headset",
+        priceNormal: 199.99,
+        priceText: "R$ 199.99",
+        image: "./img/Headset.png",
+        quantity: 0,
+        category: "electronics"
+    },
+    {
+        name: "Laptop",
+        priceNormal: 499.99,
+        priceText: "R$ 499.99",
+        image: "./img/Laptop.png",
+        quantity: 0,
+        category: "electronics"
+    },
+    {
+        name: "Smartwatch",
+        priceNormal: 149.99,
+        priceText: "R$ 149.99",
+        image: "./img/Smartwatch.png",
+        quantity: 0,
+        category: "electronics"
+    },
+    {
+        name: "PS5",
+        priceNormal: 999.99,
+        priceText: "R$ 999.99",
+        image: "./img/PS5.png",
+        quantity: 0,
+        category: "electronics"
     }
 ]
 
 products.forEach((product, index) => {
     const productContainer = document.createElement("div");
-    productContainer.className = "col-3 m-5 text-center shadow product-box";
+    productContainer.className = "col-3 mb-5 ml-5 mr-5 text-center shadow product-box";
     productContainer.style.height = "30rem";
     productContainer.innerHTML = `
         <div class="row">
@@ -99,7 +153,7 @@ products.forEach((product, index) => {
             priceSpan.innerText = `= R$${product.priceUpdate}`;
         } else {
             const cartItem = document.createElement("div");
-            cartItem.className = "product-cart d-flex justify-content-center align-items-center shadow-sm p-3";
+            cartItem.className = "product-cart d-flex justify-content-space align-items-center shadow-sm p-3";
             cartItem.setAttribute("data-index", index);
             product.priceUpdate = (product.quantity * product.priceNormal).toFixed(2);
             cartItem.innerHTML = `
@@ -133,9 +187,9 @@ function updateCartTotal() {
     valorTotalElement.innerText = `R$${total.toFixed(2)}`;
 }
 
-let cart = document.getElementById("cart")
-let btnOpen = document.getElementById("open")
-let btnClose = document.getElementById("close") 
+const cart = document.getElementById("cart")
+const btnOpen = document.getElementById("open")
+const btnClose = document.getElementById("close") 
 
 
 function openCart(){ 
@@ -152,4 +206,10 @@ function closeCart(){
 }
 
 btnOpen.addEventListener("click", openCart) 
-btnClose.addEventListener("click", closeCart) 
+btnClose.addEventListener("click", closeCart)
+
+const btnChocolate = document.getElementById("btnChocolate")
+const btnEletronics = document.getElementById("btnEletronics")
+
+const chocolateProducts = products.filter(product => product.category === "chocolate")
+const electronicsProducts = products.filter(product => product.category === "electronics")
