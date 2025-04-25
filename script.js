@@ -53,7 +53,7 @@ const products = [
         priceText: "R$ 299.99",
         image: "./img/Celular.png",
         quantity: 0,
-        category: "electronics"
+        category: "electronics",
     },
     {
         name: "Earphones",
@@ -61,7 +61,7 @@ const products = [
         priceText: "R$ 99.99",
         image: "./img/Bluetooth.png",
         quantity: 0,
-        category: "electronics"
+        category: "electronics",
     },
     {
         name: "Headset",
@@ -69,7 +69,7 @@ const products = [
         priceText: "R$ 199.99",
         image: "./img/Headset.png",
         quantity: 0,
-        category: "electronics"
+        category: "electronics",
     },
     {
         name: "Laptop",
@@ -77,7 +77,7 @@ const products = [
         priceText: "R$ 499.99",
         image: "./img/Laptop.png",
         quantity: 0,
-        category: "electronics"
+        category: "electronics",
     },
     {
         name: "Smartwatch",
@@ -85,7 +85,7 @@ const products = [
         priceText: "R$ 149.99",
         image: "./img/Smartwatch.png",
         quantity: 0,
-        category: "electronics"
+        category: "electronics",
     },
     {
         name: "PS5",
@@ -93,13 +93,14 @@ const products = [
         priceText: "R$ 999.99",
         image: "./img/PS5.png",
         quantity: 0,
-        category: "electronics"
+        category: "electronics",
     }
 ]
 
 products.forEach((product, index) => {
     const productContainer = document.createElement("div");
-    productContainer.className = "col-3 mb-5 ml-5 mr-5 text-center shadow product-box";
+    productContainer.className = "col-3 mb-5 ml-5 mr-5 text-center shadow product-box all";
+    productContainer.classList.add(product.category);
     productContainer.style.height = "30rem";
     productContainer.innerHTML = `
         <div class="row">
@@ -143,11 +144,11 @@ products.forEach((product, index) => {
         }
 
         const divItems = document.getElementById("divItems");
-        const existingCartItem = divItems.querySelector(`.product-cart[data-index="${index}"]`);
+        const existingItem = divItems.querySelector(`.product-cart[data-index="${index}"]`);
 
-        if (existingCartItem) {
-            const quantitySpan = existingCartItem.querySelector(".product-cart-quantity");
-            const priceSpan = existingCartItem.querySelector(".product-cart-price");
+        if (existingItem) {
+            const quantitySpan = existingItem.querySelector(".product-cart-quantity");
+            const priceSpan = existingItem.querySelector(".product-cart-price");
             product.priceUpdate = (product.quantity * product.priceNormal).toFixed(2);
             quantitySpan.innerText = `x ${product.quantity}`;
             priceSpan.innerText = `= R$${product.priceUpdate}`;
@@ -181,8 +182,8 @@ products.forEach((product, index) => {
 
 function updateCartTotal() {
     const valorTotalElement = document.getElementById("valueCart");
-    const total = products.reduce((sum, product) => {
-        return sum + (product.quantity * product.priceNormal);
+    const total = products.reduce((valor, product) => {
+        return valor + (product.quantity * product.priceNormal);
     }, 0);
     valorTotalElement.innerText = `R$${total.toFixed(2)}`;
 }
@@ -205,11 +206,38 @@ function closeCart(){
     }, 1000);
 }
 
-btnOpen.addEventListener("click", openCart) 
-btnClose.addEventListener("click", closeCart)
+btnOpen.addEventListener("click", openCart);
+btnClose.addEventListener("click", closeCart);
 
-const btnChocolate = document.getElementById("btnChocolate")
-const btnEletronics = document.getElementById("btnEletronics")
+const btnChocolate = document.getElementById("btnChocolate");
+const btnElectronic = document.getElementById("btnElectronic");
+const btnAll = document.getElementById("backAll");
 
-const chocolateProducts = products.filter(product => product.category === "chocolate")
-const electronicsProducts = products.filter(product => product.category === "electronics")
+btnChocolate.addEventListener("click", () => {
+    const products = document.querySelectorAll(".product-box");
+    products.forEach((product) => {
+        if (product.classList.contains("chocolate")) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+});
+
+btnAll.addEventListener("click", () => {
+    const products = document.querySelectorAll(".product-box");
+    products.forEach((product) => {
+        product.style.display = "block";
+    });
+});
+
+btnElectronic.addEventListener("click", () => {
+    const products = document.querySelectorAll(".product-box");
+    products.forEach((product) => {
+        if (product.classList.contains("electronics")) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+});
